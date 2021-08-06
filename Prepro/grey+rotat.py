@@ -17,7 +17,7 @@ from PIL import Image
 import numpy as np
 
 #input
-originalImage = cv2.imread( 'Prepro\SemiData\img01_1.jpg')
+originalImage = cv2.imread('Prepro\SemiData\img01_1.jpg')
 grayImage = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
   
 (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, 127, 255, cv2.THRESH_BINARY)
@@ -51,8 +51,8 @@ def orientation_correction(img, save_image = False):
     # Rotating the image with this median angle
     img_rotated = ndimage.rotate(img, median_angle)
     
-    if save_image:
-        cv2.imwrite('Prepro\SemiData\img09.jpg', img_rotated)
+    #if save_image:
+    #    cv2.imwrite('Prepro\SemiData\img09.jpg', img_rotated)
     return img_rotated
 ###############################################
 
