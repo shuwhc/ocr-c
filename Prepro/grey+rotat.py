@@ -6,7 +6,7 @@
 #pip install imutils
 # pip install imutils
 #3.8.5 
-
+from skimage.filters import threshold_local
 import math
 from scipy import ndimage
 
@@ -17,7 +17,7 @@ from PIL import Image
 import numpy as np
 
 #input
-originalImage = cv2.imread('Prepro\SemiData\img01_1.jpg')
+originalImage = cv2.imread('Prepro\Data\img1.jpg')
 grayImage = cv2.cvtColor(originalImage, cv2.COLOR_BGR2GRAY)
   
 (thresh, blackAndWhiteImage) = cv2.threshold(grayImage, 127, 255, cv2.THRESH_BINARY)
@@ -28,7 +28,7 @@ cv2.imwrite("Prepro\SemiData\gray.jpg", grayImage)
 #cv2.imshow('Gray image', grayImage)
 #inverted_bw = cv2.bitwise_not(blackAndWhiteImage)
 
-
+cv2.imwrite("Prepro\SemiData\BW.jpg", blackAndWhiteImage)
 
 ###############################################
 def orientation_correction(img, save_image = False):
@@ -63,6 +63,31 @@ img_rotated = orientation_correction(input_img)
 
 cv2.imwrite("Prepro\SemiData\Rotated.jpg",img_rotated)
 
-#cv2.imshow("",img_rotated)
-cv2.waitKey(0)
-cv2.destroyAllWindows()
+
+
+#################bw_scanner
+
+
+
+
+
+
+import pytesseract
+from PIL import Image
+import cv2
+
+
+
+#cv2.imshow('abc',img)
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
+
+
+
+pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+#print(pytesseract.get_languages(config=''))
+ocr_result = pytesseract.image_to_string(result, lang='chi_tra')
+print (ocr_result)
+
+# #Get bounding box estimates
+#print(pytesseract.image_to_boxes(img))
