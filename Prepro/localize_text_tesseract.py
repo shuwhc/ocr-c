@@ -1,8 +1,8 @@
 #https://www.pyimagesearch.com/2020/05/25/tesseract-ocr-text-localization-and-detection/
-# 
+
 #import the necessary packages
-from pytesseract import Output
 import pytesseract
+from pytesseract import Output
 import argparse
 import cv2
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
@@ -19,7 +19,7 @@ args = vars(ap.parse_args())
 # and use Tesseract to localize each area of text in the input image
 image = cv2.imread(args["image"])
 rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-results = pytesseract.image_to_data(rgb, output_type=Output.DICT, lang='chi_tra')
+results = pytesseract.image_to_data(rgb, output_type=Output.DICT, lang='eng')
 
 # loop over each of the individual text localizations
 for i in range(0, len(results["text"])):
@@ -33,8 +33,8 @@ for i in range(0, len(results["text"])):
 	# text localization
 	text = results["text"][i]
 	conf = int(float(results["conf"][i]))
- 
- # filter out weak confidence text localizations
+
+# filter out weak confidence text localizations
 	if conf > args["min_conf"]:
 		# display the confidence and text to our terminal
 		print("Confidence: {}".format(conf))
