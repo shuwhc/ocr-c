@@ -1,3 +1,4 @@
+#source
 #https://www.pyimagesearch.com/2020/05/25/tesseract-ocr-text-localization-and-detection/
 
 #import the necessary packages
@@ -5,7 +6,7 @@ import pytesseract
 from pytesseract import Output
 import argparse
 import cv2
-pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = r"C:/Program Files/Tesseract-OCR/tesseract.exe"
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
