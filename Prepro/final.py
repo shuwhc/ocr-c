@@ -48,17 +48,45 @@ def noise_removal(image):
 ##
 
 # Importing img
-img = cv2.imread('Prepro\Data1\img01.jpg')
-
-grayImage1 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-grayImage2 = cv2.cvtColor(grayImage1, cv2.COLOR_GRAY2RGB)
-
-bwGray = bw_scanner(grayImage2)
-
-no_noise = noise_removal(bwGray)
+import cv2
+import os.path 
+import glob 
+# img_dir = "" # Enter Directory of all images  
+# data_path = os.path.join('C:\\IA\ocr-c\\Data','*.jpg') 
 
 
-no_noise1 = cv2.cvtColor(no_noise, cv2.COLOR_GRAY2RGB)
-finalImg = orientation_correction(no_noise1)
 
-cv2.imwrite("Prepro/Data1/final.jpg",finalImg)
+
+files = glob.glob('C:\\IA\ocr-c\\Data0.5\\*.jpg') 
+data = [] 
+for f1 in files: 
+    img = cv2.imread(f1) 
+    gray = cv2.cvtColor(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), cv2.COLOR_GRAY2RGB)
+    basename = os.path.basename(f1)  # e.g. MyPhoto.jpg
+    name = os.path.splitext(basename)[0]  # e.g. MyPhoto
+    #finalImg = cv2.cvtColor(noise_removal(bw_scanner(gray)), cv2.COLOR_GRAY2RGB)
+    #finalImg = bw_scanner(gray)
+    finalImg = cv2.fastNlMeansDenoising(bw_scanner(gray),None,10,7,21)
+    cv2.imwrite('C:\\IA\ocr-c\\Data0.97\\' + name + '_final.jpg', finalImg)
+    
+
+
+#grayImage2 = cv2.cvtColor(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), cv2.COLOR_GRAY2RGB)
+
+#finalImg = orientation_correction(cv2.cvtColor(noise_removal(bw_scanner(grayImage2)), cv2.COLOR_GRAY2RGB))
+
+
+
+
+
+#grayImage1 = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+#bwGray = bw_scanner(grayImage2)
+
+#no_noise = noise_removal(bwGray)
+#no_noise1 = cv2.cvtColor(no_noise, cv2.COLOR_GRAY2RGB)
+
+#finalImg = orientation_correction(no_noise1)
+
+#cv2.imwrite("Prepro/Data1/final.jpg",finalImg)
+
+
