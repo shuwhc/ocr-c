@@ -8,7 +8,7 @@ from matplotlib import pyplot as plt
 from PIL import Image
 
 # Importing img
-originalImage = cv2.imread('C:/IA/ocr-c/PreproAndTesseract/prototypeImgTest/bwGrayNoise')
+originalImage = cv2.imread('C:/Users/soft_/Desktop/result1.jpg')
 
 #########
 #########

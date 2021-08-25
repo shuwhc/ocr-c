@@ -65,6 +65,7 @@ for f1 in files:
     cv2.imwrite('C:\\IA\ocr-c\\Data0.97\\' + name + '_final.jpg', finalImg)
     
 
+
 #grayImage2 = cv2.cvtColor(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY), cv2.COLOR_GRAY2RGB)
 
 #finalImg = orientation_correction(cv2.cvtColor(noise_removal(bw_scanner(grayImage2)), cv2.COLOR_GRAY2RGB))
